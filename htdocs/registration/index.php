@@ -8,39 +8,26 @@
 </head>
 <body>
 
-<?php
-include ('session.php'); 
+    Click here to <a href="register.php" tite="Register">Register.</a>
 
-if($_SESSION["id"]) {
-    ?>
-    Welcome <?php echo $_SESSION["id"]; ?>. Click here to <a href="logout.php" tite="Logout">Logout.</a>
     <?php
-    }
-
-
-
-            include "phpqrcode/qrlib.php";
-            $website="http://www.bloombyte.bike/";
-            $ipaddress= $_SERVER['REMOTE_ADDR'];
-
-
-            $PNG_TEMP_DIR = 'temp/';
-            if (!file_exists($PNG_TEMP_DIR))
-                mkdir($PNG_TEMP_DIR);
-            $filename = $PNG_TEMP_DIR . 'test.png';
-            $codeString = $website;
-            $codeString = $website ."?id=". $_SESSION["id"];
-            $filename = $PNG_TEMP_DIR . 'test' . md5($codeString) . '.png';
-            QRcode::png($codeString, $filename);
-            ?>
-            <div align=center>
+    if (isset($_GET['fname'])) {
+        $filename=$_GET['fname'];
+        ?>
+        <div align=center>
                 <h1>Scan QR Code</h1>
             <?php
 
-            echo '<img  width="400" height="400" src="' . $PNG_TEMP_DIR . basename($filename) . '"/>';
+            echo '<img  width="400" height="400" src="' . $filename . '"/>';
 
     ?>
             </div>
+            <?php
+    }  
+
+    ?>
+    
+
     
 </body>
 </html>
