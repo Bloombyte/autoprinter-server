@@ -1,9 +1,7 @@
 <?php 
-    $username=$_POST['email'];
+    /*$username=$_POST['email'];
     $password=$_POST['psw'];
     $passwordRepeat=$_POST['psw-repeat'];
-    $id=$_GET['user_id'];
-
 
     $conn = mysqli_connect("localhost","root","","autoprinter_database");
     if ($conn->connect_error) {
@@ -13,7 +11,7 @@
      
     $q = "INSERT INTO `user_info`( `user_name`, `pwd`) VALUES ('$username','$password')";
     $result=mysqli_query($conn,$q);
-
+    */
     /*$q1 = "SELECT * FROM user_info WHERE user_name LIKE '".$username."' AND pwd LIKE '".$password."'";
     $result1=mysqli_query($conn,$q1);
     if(mysqli_num_rows($result1)>0)
@@ -22,6 +20,7 @@
       $id=$cat['id'];
     }*/
 
+    $id=$_GET['user_id'];
 
     include "phpqrcode/qrlib.php";
     $website="http://www.bloombyte.bike/";
