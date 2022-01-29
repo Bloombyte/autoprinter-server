@@ -30,7 +30,7 @@
     $filename = $PNG_TEMP_DIR . 'test.png';
     $codeString = $website;
     $codeString = $website ."?id=". $id;
-    $filename = $PNG_TEMP_DIR . 'test' . md5($codeString) . '.png';
+    $filename = $PNG_TEMP_DIR . 'test' . $id . '.png';
     QRcode::png($codeString, $filename);
     
     ?>
