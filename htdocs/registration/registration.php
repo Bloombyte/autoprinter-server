@@ -23,13 +23,13 @@
     $id=$_GET['user_id'];
 
     include "phpqrcode/qrlib.php";
-    $website="http://www.bloombyte.bike/";
+    $website="http://10.8.22.94/autoprinter-server/htdocs/";
     $PNG_TEMP_DIR = 'temp/';
     if (!file_exists($PNG_TEMP_DIR))
         mkdir($PNG_TEMP_DIR);
     $filename = $PNG_TEMP_DIR . 'test.png';
     $codeString = $website;
-    $codeString = $website ."?id=". $id;
+    $codeString = $website ."?user_id=". $id;
     $filename = $PNG_TEMP_DIR . 'test' . $id . '.png';
     QRcode::png($codeString, $filename);
     
