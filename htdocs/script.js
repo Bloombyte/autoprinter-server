@@ -1,3 +1,6 @@
+var label;
+var file = document.getElementById('upload-area');
+
 function toggleBarVisibility() {
     var e = document.getElementById("bar_blank");
     e.style.display = (e.style.display == "block") ? "none" : "block";
@@ -47,3 +50,23 @@ function startUpload() {
     document.getElementById("myForm").onsubmit = startUpload;
 
 })();
+
+file.addEventListener('change', filePresent);
+
+function filePresent(){
+    const name = file.value.split(/(\\|\/)/g).pop();
+    label = document.getElementById('label');
+    label.innerHTML = name + ' || ' + returnFileSize(document.getElementById("upload-area").files[0].size);
+}
+
+function returnFileSize(number) {
+    console.log(number);
+    if(number < 1024) {
+      return number + 'Bytes';
+    } else if(number >= 1024 && number < 1048576) {
+      return (number/1024).toFixed(1) + 'KB';
+    } else if(number >= 1048576) {
+      return (number/1048576).toFixed(1) + 'MB';
+    }
+  }
+  
