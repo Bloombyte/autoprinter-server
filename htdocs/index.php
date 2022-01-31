@@ -26,7 +26,7 @@ if ($userId == ""){
         
         <input type="hidden" value="myForm" name="<?php echo ini_get(" session.upload_progress.name"); ?>">
         <input type="file" name="myFile" id="upload-area">
-        <label for="upload-area"> Click to Browse file to Upload</label><br>
+        <label id="label" for="upload-area"> Click to Browse file to Upload</label><br>
         <div class="height"> </div>
         <input type="submit" id="submit" value="Start Upload" onclick = "RemoveStatus();">
     </form>

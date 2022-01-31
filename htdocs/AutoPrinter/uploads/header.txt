@@ -1,0 +1,26 @@
+//prevent including multiple times
+#ifndef _AES_H
+#define _AES_H
+
+#define BLOCK_SIZE 16
+
+//making sure its content works only when compiling C++ programs
+#ifdef __cplusplus
+extern "C" {
+#endif
+	//set norounds = 10, 12, 14 for 128bits, 192bits, 256bits (encryption/ decryption key respectevely) respectively
+	typedef struct {
+		unsigned __int8 noRounds;
+		unsigned __int32 encKey[60];
+		unsigned __int32 decKey[60];
+	} aesContext;
+
+	int aesInit(aesContext *context, const unsigned __int8 *key, size_t keyLen);
+	void aesEncrypt(aesContext *context, const unsigned __int8 *input, unsigned __int8 *output);
+	void aesDecrypt(aesContext *context, const unsigned __int8 *input, unsigned __int8 *output);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
