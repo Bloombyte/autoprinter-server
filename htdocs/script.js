@@ -20,7 +20,18 @@ function sendRequest() {
     http.send(null);
 }
 
+function RemoveStatus(){
+
+    if(document.getElementById("status").innerHTML == "Upload Sucessful."){
+
+        document.getElementById("status").innerHTML = "";
+
+    }
+
+}
+
 function handleResponse(http) {
+
     var response;
     if (http.readyState == 4) {
         response = http.responseText;

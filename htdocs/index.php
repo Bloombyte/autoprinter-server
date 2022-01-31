@@ -18,7 +18,7 @@
         <input type="file" name="myFile" id="upload-area">
         <label for="upload-area"> Click to Browse file to Upload</label><br>
         <div class="height"> </div>
-        <input type="submit" id="submit" value="Start Upload">
+        <input type="submit" id="submit" value="Start Upload" onclick = "RemoveStatus();">
     </form>
     <div id="status"></div>
     <div id="bar_blank">
