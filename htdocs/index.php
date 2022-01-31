@@ -1,14 +1,4 @@
-<?php
 
-$userId = $_GET["USERID"];
-
-if ($userId == ""){
-
-    //Close Connection ? Maybe
-
-}
-
-?>
 <html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +12,7 @@ if ($userId == ""){
     <div class="heading-text">
         Upload Your Printing File Here
     </div>
-    <form action="./AutoPrinter/upload.php/?USERID=".$userId) method="POST" id="myForm" enctype="multipart/form-data" target="hidden_iframe">
+    <form action="./AutoPrinter/upload.php/?USERID=") method="POST" id="myForm" enctype="multipart/form-data" target="hidden_iframe">
         
         <input type="hidden" value="myForm" name="<?php echo ini_get(" session.upload_progress.name"); ?>">
         <input type="file" name="myFile" id="upload-area">

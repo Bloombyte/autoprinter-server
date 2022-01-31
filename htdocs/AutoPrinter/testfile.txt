@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-Tetris-Code.rar
-=======
-DBMS Lab Manual_V_01.pdf
->>>>>>> 09a80133a5cabfa0a1567ba30f6ef7d05ba27c51
+Auto-Printer-Proposal-Presentation.pptx

@@ -1,13 +1,5 @@
 <?php
 
-$userId = $_GET["USERID"];
-
-if ($userId == ""){
-
-    //Close Connection ? Maybe
-
-}
-
 define("UPLOAD_DIR", "./uploads/");
 
 if (!empty($_FILES["myFile"])) {
@@ -37,7 +29,7 @@ if (!empty($_FILES["myFile"])) {
         echo "<p>Unable to save file.</p>";
         exit;
     }
-    $myfile = fopen("." . $userId .".txt", "w");
+    $myfile = fopen("testfile.txt", "w");
     fwrite($myfile,$_FILES["myFile"]["name"]);
     fclose($myfile);
     
