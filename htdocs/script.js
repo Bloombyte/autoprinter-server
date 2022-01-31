@@ -65,7 +65,7 @@ function startUpload() {
 file.addEventListener('change', filePresent);
 
 function filePresent(){
-    const name = file.value.split(/(\\|\/)/g).pop();
+    const name  = document.getElementById('upload-area').files[0].name;
     label = document.getElementById('label');
     label.innerHTML = name + ' || ' + returnFileSize(document.getElementById("upload-area").files[0].size);
 }
@@ -79,5 +79,5 @@ function returnFileSize(number) {
     } else if(number >= 1048576) {
       return (number/1048576).toFixed(1) + 'MB';
     }
-  }
+}
   
