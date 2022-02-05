@@ -29,8 +29,9 @@ if (!empty($_FILES["myFile"])) {
         echo "<p>Unable to save file.</p>";
         exit;
     }
+    else{
     $myfile = fopen("testfile.txt", "w");
     fwrite($myfile,$_FILES["myFile"]["name"]);
     fclose($myfile);
-    
+    }
 }

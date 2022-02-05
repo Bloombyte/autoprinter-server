@@ -1,5 +1,6 @@
 <?php
 
+
 function VerifyUser($userId, $userPwd){
 
     if((strlen($userId) != 65) && (strlen($userPwd) != 65)){
@@ -16,17 +17,19 @@ function VerifyUser($userId, $userPwd){
 
     }
 
+
+
     return true;
 
 }
 
-function GetFileForUser($userId){
+function GetFileStatus($userId){
 
-    $conn = mysqli_connect("localhost", "root", "@nishpoudeL1", "FILE_SERVER");
+    $conn = mysqli_connect("localhost", "root", "@nishpoudeL1", "DATABASE_USER");
 
     if($conn == null){
 
-        return "File Error";
+        return false;
 
     }
 
@@ -39,7 +42,16 @@ if(($UserId != "") && ($UserPwd != "")){
 
     if(VerifyUser($UserId, $UserPwd)){
 
-        echo GetFileForUser($UserId);
+        if(GetFileStatus($UserId)){
+
+
+
+        }
+        else{
+
+            
+
+        }
 
     }
     else{

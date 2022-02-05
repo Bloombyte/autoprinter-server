@@ -12,7 +12,7 @@
     <div class="heading-text">
         Upload Your Printing File Here
     </div>
-    <form action="./AutoPrinter/upload.php/?USERID=") method="POST" id="myForm" enctype="multipart/form-data" target="hidden_iframe">
+    <form action="./AutoPrinter/upload.php") method="POST" id="myForm" enctype="multipart/form-data" target="hidden_iframe">
         
         <input type="hidden" value="myForm" name="<?php echo ini_get(" session.upload_progress.name"); ?>">
         <input type="file" name="myFile" id="upload-area">
