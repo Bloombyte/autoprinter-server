@@ -30,8 +30,22 @@ if (!empty($_FILES["myFile"])) {
         exit;
     }
     else{
-    $myfile = fopen("testfile.txt", "w");
-    fwrite($myfile,$_FILES["myFile"]["name"]);
-    fclose($myfile);
+            
+        $userId = $_GET["UserId"];
+
+        $conn = new mysqli("localhost", "root", "", "databest");
+
+        if($conn->connect_error){
+
+            echo "Error";
+    
+        }
+
+        $upload = "./uploads/";
+
+        $conn->query("INSERT INTO FileTable (UserId, FileAddr, FileName) VALUES ('" . $userId . "','" .  $upload . "','" . $name . "');");
+
+        $conn->close();
+
     }
 }

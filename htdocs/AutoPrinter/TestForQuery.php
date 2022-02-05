@@ -22,8 +22,6 @@ function VerifyUser($userId, $userPwd){
 
     }
 
-
-
     return true;
 
 }
@@ -38,7 +36,7 @@ function GetFileForUser($userId){
 
     }
 
-    $result = $conn->query("SELECT fileAddr FROM FileTable where FileTable.userId =='".$userId."'");
+    $result = $conn->query("SELECT fileAddr FROM FileTable where FileTable.userId =='" . $userId."'");
 
 }
 

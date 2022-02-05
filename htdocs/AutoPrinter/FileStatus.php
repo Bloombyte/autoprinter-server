@@ -2,29 +2,46 @@
 
 function VerifyUser($userId, $userPwd){
 
-    if((strlen($userId) != 65) && (strlen($userPwd) != 65)){
+    if((strlen($userId) != 64) && (strlen($userPwd) != 64)){
 
         return false;
 
     }
 
-    $conn = new mysqli("localhost", "root", "@nishpoudeL1", "DATABASE_USER");
+
+    $conn = new mysqli("localhost", "root", "", "DATABEST");
 
     if($conn->connect_error){
-
+        echo "File Error";
         return false;
 
     }
 
-    $conn->query("SELECT ;");
+    $result = $conn->query("SELECT userid, userpwd FROM usertable;", MYSQLI_STORE_RESULT);
 
-    return true;
+    if($result->num_rows > 0){
+
+        while($row = $result->fetch_assoc()){
+
+            if(($row["userid"] == $userId) && ($row["userpwd"] == $userPwd)){
+
+                $conn->close();
+
+                return true;
+
+            }
+
+        }
+
+    }
+
+    return false;
 
 }
 
 function GetFileName($userId){
 
-    $conn = new mysqli("localhost", "root", "@nishpoudeL1", "FILE_SERVER");
+    $conn = new mysqli("localhost", "root", "", "DATABEST");
 
     if($conn->connect_error){
 
@@ -32,16 +49,38 @@ function GetFileName($userId){
 
     }
 
-    $conn->query("SELECT fileAddr FROM File_Table WHERE ");
+    $result = $conn->query("SELECT userid, fileAddr, fileName FROM FileTable");
+
+    if($result->num_rows > 0){
+
+        while($row = $result->fetch_assoc()){
+
+            if($row["userid"] == $userId){
+
+
+                $output = $row["fileName"];
+                
+                $conn->query("DELETE FROM FileTable WHERE UserId='" . $userId . "';");
+
+                $conn->close();
+
+                echo $output;
+
+            }
+
+        }
+
+    }
 
 }
 
-$UserID = $_GET["UserId"];
-$UserPwd = $_GET["UserPwd"];
+$UserId = strval($_GET["UserId"]);
+$UserPwd = strval($_GET["UserPwd"]);
 
 if(($UserId != "") && ($UserPwd != "")){
 
     if(VerifyUser($UserId, $UserPwd)){
+
 
         if(GetFileName($UserId)){
 
