@@ -16,6 +16,8 @@ function VerifyUser($userId, $userPwd){
 
     }
 
+    mysqli_close($conn);
+
     return true;
 
 }
@@ -29,6 +31,8 @@ function GetFileForUser($userId){
         return "File Error";
 
     }
+
+    mysqli_close($conn);
 
 }
 

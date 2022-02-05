@@ -8,6 +8,12 @@ function VerifyUser($userId, $userPwd){
 
     }
 
+    if(str_contains($userId," ") && str_contains($userId, " ")){
+
+        return false;
+
+    }
+
     $conn = new mysqli("localhost", "root", "@nishpoudeL1", "DATABASE_USER");
 
     if($conn->connect_error){
@@ -16,23 +22,23 @@ function VerifyUser($userId, $userPwd){
 
     }
 
-    $conn->query("SELECT ;");
+
 
     return true;
 
 }
 
-function GetFileName($userId){
+function GetFileForUser($userId){
 
     $conn = new mysqli("localhost", "root", "@nishpoudeL1", "FILE_SERVER");
 
     if($conn->connect_error){
 
-        return false;
+        return "File Error";
 
     }
 
-    $conn->query("SELECT fileAddr FROM File_Table WHERE ");
+    $result = $conn->query("SELECT fileAddr FROM FileTable where FileTable.userId =='".$userId."'");
 
 }
 
@@ -43,16 +49,7 @@ if(($UserId != "") && ($UserPwd != "")){
 
     if(VerifyUser($UserId, $UserPwd)){
 
-        if(GetFileName($UserId)){
-
-
-
-        }
-        else{
-
-            
-
-        }
+        echo GetFileForUser($UserId);
 
     }
     else{
