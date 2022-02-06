@@ -1,5 +1,8 @@
 <?php
 
+//Disable error 
+error_reporting(0);
+
 $userId = $_GET["UserId"];
 
 ?>
