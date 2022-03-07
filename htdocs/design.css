@@ -47,20 +47,20 @@ form{
     justify-content: center;
 }
 .heading-text{
-    font-style: bold;
-    font-size: 36px;
+    font-weight: 500;
+    font-size: 4em;
     margin-bottom: 60px;
 }
 label {
     background-color: #d96b552d;
-    font-size: 18px;
+    font-size: 2.3em;
     font-weight: 600;
     color: #D96B55;
-    padding: 100px 150px;
+    padding: 150px 200px;
     border: 4px dashed #D96B55;
     border-radius: 1rem;
     cursor: pointer;
-    margin-top: 1rem;
+    margin: 20px;
 }
 input[type=file]{
     display:none;
@@ -69,9 +69,9 @@ input[type=submit]{
     border: none;
     background-color: #D96B55;
     color: white;
-    padding: 10px 26px;
+    padding: 20px 40px;
     border-radius: 0.4rem;
-    font-size: 18px;
+    font-size: 2.9em;
     cursor: pointer;
 }
 input[type=submit]:disabled{
@@ -79,22 +79,4 @@ input[type=submit]:disabled{
 }
 .height{
     padding-top: 20px;
-}
-
-@media screen and (max-width: 800px) {
-    label {
-        border: none;
-        background-color: #D96B55;
-        color: white;
-        padding: 10px 26px;
-        border-radius: 0.4rem;
-        font-size: 18px;
-        font-weight: 400;
-        cursor: pointer;
-    }
-}
-@media screen and (max-width: 600px) {
-    .heading-text{
-        font-size: 28px;
-    }
 }

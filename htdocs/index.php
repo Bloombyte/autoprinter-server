@@ -22,8 +22,8 @@ $userId = $_GET["UserId"];
     <form action=<?php echo "./AutoPrinter/upload.php?UserId=".strval($userId)?> method="POST" id="myForm" enctype="multipart/form-data" target="hidden_iframe">
         
         <input type="hidden" value="myForm" name="<?php echo ini_get(" session.upload_progress.name"); ?>">
-        <input type="file" name="myFile" id="upload-area">
-        <label id="label" for="upload-area"> Click to Browse file to Upload</label><br>
+        <input type="file" name="myFile" id="upload-area" accept=".pdf, .doc, .docx, image/*">
+        <label id="label" for="upload-area"> Tap to Browse file to Upload</label><br>
         <div class="height"> </div>
         <input type="submit" id="submit" value="Start Upload" onclick = "RemoveStatus();">
     </form>
