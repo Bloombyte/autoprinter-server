@@ -5,7 +5,7 @@ $userPwd = strval($_GET["UserPwd"]);
 
 function AddUsers($userId, $userPwd){
 
-    $conn = new mysqli("localhost", "root", "@nishpoudeL1", "DATABASE_USER");
+    $conn = new mysqli("localhost", "root", "", "DATABEST");
 
     if($conn->connect_error){
 
@@ -13,14 +13,23 @@ function AddUsers($userId, $userPwd){
 
     }
 
-    $date = $date = date('Y/m/d H:i:s');
+    $result = $conn->query("SELECT UserId FROM usertable where usertable.UserId = '" . $userId . "';");
 
-    $conn->query("INSERT INTO TABLE_USERS(Username, UserPassword, CreatedDate, num_of_files, error_status, is_active) VALUES (" . "'" . $userId. "'," . "'". $userPwd . "','" . $date . "'," . "0, 0, 0);");
+    if($result->num_rows != 0){
+
+        echo "UserName Already Exists";
+        die;
+
+    }
+
+    $conn->query("INSERT INTO usertable(UserId, UserPwd, num_of_files, error_status, is_active) VALUES (" . "'" . $userId. "'," . "'". $userPwd . "'," . "0, 0, 0);");
 
     $conn->close();
 
 }
 
 AddUsers($userId, $userPwd);
+
+echo "New User Created";
 
 ?>

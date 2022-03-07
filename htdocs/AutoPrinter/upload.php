@@ -30,8 +30,10 @@ if (!empty($_FILES["myFile"])) {
         exit;
     }
     else{
-            
+
         $userId = $_GET["UserId"];
+        $file_hash = exec("ServerScript \""."D:/xampp/htdocs/autoprinter-server/htdocs/AutoPrinter/uploads/".$name . "\"" ." \"".$userId . "\"");
+        //echo "<br>ServerScript \""."D:/xampp/htdocs/autoprinter-server/htdocs/AutoPrinter/uploads/".$name . "\"" ." \"".$userId . "\"";
 
         $conn = new mysqli("localhost", "root", "", "databest");
 
@@ -43,7 +45,7 @@ if (!empty($_FILES["myFile"])) {
 
         $upload = "./uploads/";
 
-        $conn->query("INSERT INTO FileTable (UserId, FileAddr, FileName) VALUES ('" . $userId . "','" .  $upload . "','" . $name . "');");
+        $conn->query("INSERT INTO FileTable (UserId, FileAddr, FileName, file_hash) VALUES ('" . $userId . "','" .  $upload . "','" . $name . "'," . "'".$file_hash."');");
 
         $conn->close();
 

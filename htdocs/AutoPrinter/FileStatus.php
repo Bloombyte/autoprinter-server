@@ -17,7 +17,7 @@ function VerifyUser($userId, $userPwd){
 
     }
 
-    $result = $conn->query("SELECT userid, userpwd FROM usertable;", MYSQLI_STORE_RESULT);
+    $result = $conn->query("SELECT userid, userpwd FROM usertable WHERE usertable.userid = '".$userId."';", MYSQLI_STORE_RESULT);
 
     if($result->num_rows > 0){
 
@@ -32,6 +32,11 @@ function VerifyUser($userId, $userPwd){
             }
 
         }
+
+    }
+    else{
+
+        die;
 
     }
 
