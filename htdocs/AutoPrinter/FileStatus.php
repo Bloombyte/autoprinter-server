@@ -1,10 +1,35 @@
 <?php
 
+function VerifyHash($Input){
+
+    for($Index = 0;$Index<strlen($Input);$Index++){
+
+        if(!($Input[$Index]<"0" && $Input[$Index] > "f")){
+
+            if($Input[$Index] > "F" && $Input < "a"){
+                
+                return false;
+            }
+            
+        }
+
+    }
+
+    return true;
+
+}
+
 function VerifyUser($userId, $userPwd){
 
     if((strlen($userId) != 64) && (strlen($userPwd) != 64)){
 
         return false;
+
+    }
+
+    if(!(VerifyHash($userId) && VerifyHash($userPwd))){
+
+        return true;
 
     }
 
@@ -25,7 +50,7 @@ function VerifyUser($userId, $userPwd){
 
             if(($row["userid"] == $userId) && ($row["userpwd"] == $userPwd)){
 
-                $conn->close();
+                //$conn->close();
 
                 return true;
 
@@ -67,7 +92,7 @@ function GetFileName($userId){
                 
                 $conn->query("DELETE FROM FileTable WHERE UserId='" . $userId . "';");
 
-                $conn->close();
+                //$conn->close();
 
                 echo $output;
 

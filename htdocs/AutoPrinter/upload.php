@@ -1,5 +1,30 @@
 <?php
 
+function VerifyHash($Input){
+
+    if(strlen($Input) != 64){
+
+        return false;
+
+    }
+
+    for($Index = 0;$Index<strlen($Input);$Index++){
+
+        if(!($Input[$Index]<"0" && $Input[$Index] > "f")){
+
+            if($Input[$Index] > "F" && $Input < "a"){
+                
+                return false;
+            }
+            
+        }
+
+    }
+
+    return true;
+
+}
+
 define("UPLOAD_DIR", "./uploads/");
 
 if (!empty($_FILES["myFile"])) {
@@ -32,6 +57,13 @@ if (!empty($_FILES["myFile"])) {
     else{
 
         $userId = $_GET["UserId"];
+
+        if(!VerifyHash($userId)){
+
+            die;
+
+        }
+
         $file_hash = exec("ServerScript \""."D:/xampp/htdocs/autoprinter-server/htdocs/AutoPrinter/uploads/".$name . "\"" ." \"".$userId . "\"");
         //echo "<br>ServerScript \""."D:/xampp/htdocs/autoprinter-server/htdocs/AutoPrinter/uploads/".$name . "\"" ." \"".$userId . "\"";
 
@@ -43,9 +75,11 @@ if (!empty($_FILES["myFile"])) {
     
         }
 
+        $encrypedHash = exec("ServerScript \""."D:/xampp/htdocs/autoprinter-server/htdocs/AutoPrinter/uploads/" . $name . "\"");
+
         $upload = "./uploads/";
 
-        $conn->query("INSERT INTO FileTable (UserId, FileAddr, FileName, file_hash) VALUES ('" . $userId . "','" .  $upload . "','" . $name . "'," . "'".$file_hash."');");
+        $conn->query("INSERT INTO FileTable (UserId, FileAddr, FileName, file_hash, encrypted_hash) VALUES ('" . $userId . "','" .  $upload . "','" . $name . "'," . "'".$file_hash."', ' " .$encrypedHash. "' );");
 
         $conn->close();
 
